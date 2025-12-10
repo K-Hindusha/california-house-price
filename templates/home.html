@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>California House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+        .container {
+            width: 430px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9f7ef;
+            color: #155724;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .hint {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>California House Price Predictor</h2>
+
+    <form action="/pred" method="post">
+
+        <label>Median Income</label>
+        <div class="hint">Example: 8.3 (income in tens of thousands)</div>
+        <input type="number" step="any" name="MedInc" placeholder="e.g. 8.3252" required>
+
+        <label>House Age</label>
+        <div class="hint">Example: 41 (years)</div>
+        <input type="number" step="any" name="HouseAge" placeholder="e.g. 41" required>
+
+        <label>Average Rooms</label>
+        <div class="hint">Example: 6.98 (rooms per household)</div>
+        <input type="number" step="any" name="AveRooms" placeholder="e.g. 6.98" required>
+
+        <label>Average Bedrooms</label>
+        <div class="hint">Example: 1.02 (bedrooms per household)</div>
+        <input type="number" step="any" name="AveBedrms" placeholder="e.g. 1.02" required>
+
+        <label>Population</label>
+        <div class="hint">Example: 322 (people in block)</div>
+        <input type="number" step="any" name="Population" placeholder="e.g. 322" required>
+
+        <label>Average Occupancy</label>
+        <div class="hint">Example: 2.55 (people per household)</div>
+        <input type="number" step="any" name="AveOccup" placeholder="e.g. 2.55" required>
+
+        <label>Latitude</label>
+        <div class="hint">Example: 37.88</div>
+        <input type="number" step="any" name="Latitude" placeholder="e.g. 37.88" required>
+
+        <label>Longitude</label>
+        <div class="hint">Example: -122.23</div>
+        <input type="number" step="any" name="Longitude" placeholder="e.g. -122.23" required>
+
+        <button type="submit">Predict House Price</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
